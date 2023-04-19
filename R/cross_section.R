@@ -112,7 +112,7 @@ estimateCellCellDistance <- function(gobject,
                                      method=c("mean","median")
                                      ){
 
-  delaunay_network_DT = gobject@spatial_network[[thickness_unit]][[spatial_network_name]]@networkDT
+  delaunay_network_DT = gobject@spatial_network[[spatial_network_name]]@networkDT
 
   CellCellDistance = get_distance(networkDT= delaunay_network_DT,
                                               method=method)
@@ -442,9 +442,7 @@ createCrossSection <- function(gobject,
   
   colnames_to_extract = c("sdimx", "sdimy", "sdimz")
   spatial_locations = spatial_locations[, colnames_to_extract]
-  
-  spatial_locations_test = spatial_locations$coordinates
-  
+    
   spatial_locations_test = spatial_locations@coordinates
   spatial_locations_test = as.matrix(spatial_locations_test)
   rownames(spatial_locations_test) = cell_IDs
